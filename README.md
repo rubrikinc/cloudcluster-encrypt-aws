@@ -4,22 +4,39 @@ The CC_Encrypt_AWS script is used to convert Rubrik Cloud Clusters on AWS from u
 
 ## Description
 
-CC_Encrypt_AWS will encrypt both the root disk and the data disks of a freahly launched Rubrik Cloud Cluster. It is not supported to use this script on a bootstrapped Cloud Cluster at this time. The script will take 40 minutes to an hour to run per node. It can be run in parrallel on seperarte nodes to speed up the proccess. Each itteration of the script will run on a sperate AWS instance,
+CC_Encrypt_AWS will encrypt both the root disk and the data disks of a freshly launched Rubrik Cloud Cluster. The script can also be used to encrypt a new node that is being added to an existing Cloud Cluster, prior to adding it to the cluster. It is not supported to use this script on a bootstrapped Cloud Cluster at this time. CC_Encrypt_AWS can also be used to re-size the data volume storage of a Cloud Cluster node.
+
+The script will take 40 minutes to an hour to run per node. It can be run in parallel on separate nodes to speed up the process. Each iteration of the script will run on a separate AWS instance. CC_Encrypt_AWS uses this basic methodology to encrypt Cloud Cluster on AWS:
+
+1. Optionally stop the node instance.
+2. Create a snapshot of the root volume for the node.
+3. Copy the original root volume snapshot to an encrypted snapshot.
+4. Create a new volume from the encrypted root volume snapshot copy.
+5. Detach the root volume from the node instance.
+6. Attach the encrypted root volume to the node instance.
+7. Delete the original root volume.
+8. Delete the snapshot of the original root volume
+9. Delete the snapshot of the encrypted root volume.
+10. Detach each empty data volume from the node instance.
+11. Create a new encrypted volume of a user specified size.
+12. Attach the new encrypted volumes to the node instance using new device names.
+13. Optionally start the node instance.
 
 ## Prerequisites
 
 - python 3.6.1+ and pip
 - boto3
+- The node(s) must be deployed but not bootstrapped
 
 ## Installation
 
 1. Install [python 3.6.1 and pip](http://docs.python-guide.org/en/latest/starting/installation/) or higher
 2. Install [boto3](https://boto3.readthedocs.io/en/latest/guide/quickstart.html)
-3. Downlaod and save the [cc_encyrpt_aws](https://github.com/rubrik-devops/cc_encrypt_aws) script from GitHub to a working directory.
+3. Download and save the [cc_encrypt_aws](https://github.com/rubrik-devops/CC_Encrypt_AWS) script from GitHub to a working directory.
 
 ## Usage Instructions
 
-To use the script run `python3 cc_encypt_aws.py [options]`. Specify the appopriate options for the instance. These include:
+To use the script run `python3 cc_encrypt_aws.py [options]`. Specify the appropriate options for the instance. These include:
 
 ```text
 usage: cc_encrypt_aws.py [-h] --instanceid IID --disksize DS
@@ -59,7 +76,7 @@ optional arguments:
 
 ## Contribution
 
-Create a fork of the project into your own reposity. Make all your necessary changes and create a pull request with a description on what was added or removed and details explaining the changes in lines of code. If approved, project owners will merge it.
+Create a fork of the project into your own repository. Make all your necessary changes and create a pull request with a description on what was added or removed and details explaining the changes in lines of code. If approved, project owners will merge it.
 
 ## Licensing
 
