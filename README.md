@@ -4,7 +4,7 @@ The CC_Encrypt_AWS script is used to convert Rubrik Cloud Clusters on AWS from u
 
 ## Description
 
-CC_Encrypt_AWS will encrypt both the root disk and the data disks of a freshly launched Rubrik Cloud Cluster. It is not supported to use this script on a bootstrapped Cloud Cluster at this time. The script will take 40 minutes to an hour to run per node. It can be run in parrallel on separate nodes to speed up the proccess. Each iteration of the script will run on a separate AWS instance,
+CC_Encrypt_AWS will encrypt both the root disk and the data disks of a freshly launched Rubrik Cloud Cluster. It is not supported to use this script on a bootstrapped Cloud Cluster at this time. The script will take 40 minutes to an hour to run per node. It can be run in parrallel on separate nodes to speed up the proccess. Each iteration of the script will run on a separate AWS instanc.
 
 ## Prerequisites
 
