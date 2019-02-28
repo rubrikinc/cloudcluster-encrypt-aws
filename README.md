@@ -1,72 +1,33 @@
-# CC_Encrypt_AWS
+# Rubrik CloudCluster AWS Encryption Script
 
 The CC_Encrypt_AWS script is used to convert Rubrik Cloud Clusters on AWS from unencrypted disks to encrypted disks, thus providing encryption at rest for Cloud Cluster in AWS.
 
-## Description
-
 CC_Encrypt_AWS will encrypt both the root disk and the data disks of a freshly launched Rubrik Cloud Cluster. It is not supported to use this script on a bootstrapped Cloud Cluster at this time. The script will take 40 minutes to an hour to run per node. It can be run in parrallel on separate nodes to speed up the proccess. Each iteration of the script will run on a separate AWS instance.
 
-## Prerequisites
+# :blue_book: Documentation 
 
-- python 3.6.1+ and pip
-- boto3
+Here are some resources to get you started! If you find any challenges from this project are not properly documented or are unclear, please [raise an issue](https://github.com/rubrikinc/use-case-cloudcluster-encrypt-aws/issues/new/choose) and let us know! This is a fun, safe environment - don't worry if you're a GitHub newbie! :heart:
 
-## Installation
+* [Quick Start Guide](/docs/QUICKSTART.md)
 
-1. Install [python 3.6.1 and pip](http://docs.python-guide.org/en/latest/starting/installation/) or higher
-2. Install [boto3](https://boto3.readthedocs.io/en/latest/guide/quickstart.html)
-3. Downlaod and save the [cc_encyrpt_aws](https://github.com/rubrik-devops/cc_encrypt_aws) script from GitHub to a working directory.
+# :white_check_mark: Prerequisites
 
-## Usage Instructions
+There are a few services you'll need in order to get this project off the ground:
 
-To use the script run `python3 cc_encypt_aws.py [options]`. Specify the appopriate options for the instance. These include:
+* python 3.6.1+ and pip
+* boto3
 
-```text
-usage: cc_encrypt_aws.py [-h] --instanceid IID --disksize DS
-                         [--clientmasterkey CMK] [--profile PROFILE]
-                         [--stopinstance] [--dryrun]
+# :muscle: How You Can Help
 
-Encrypt disks for Rubrik Cloud Cluster in AWS
+We glady welcome contributions from the community. From updating the documentation to adding more Intents for Roxie, all ideas are welcome. Thank you in advance for all of your issues, pull requests, and comments! :star:
 
-required arguments:
+* [Contributing Guide](CONTRIBUTING.md)
+* [Code of Conduct](CODE_OF_CONDUCT.md)
 
-  --instanceid IID, -i IID
-                        AWS Instance ID for Rubrik Cloud Cluster node.
-  --disksize DS, -d DS  Disk size for disks in nodes. Minimum 512GiB, Maximum
-                        2048 GiB. Default is 1024 days.
-
-optional arguments:
-  -h, --help            show this help message and exit
-  --clientmasterkey CMK, -k CMK
-                        Customer Master Key to encrypt volumes. If this is not
-                        specified the AWS default key is used.
-  --profile PROFILE, -p PROFILE
-                        AWS Profile to use. If left blank the default profile
-                        will be used.
-  --stopinstance, -s    Stop instances if they are running.
-  --dryrun, -D          Dry run only. Do not encrypt disks. Default is false.
-```
-
-## Future
-
-- Add these functions depending on necessity
-  - Include capability to run one script and act on a whole cluster.
-  - Add ability to encrypt a running bootstrapped cluster.
-  - Support use with CloudFormation
-- Clean up the code
-  - Break out into multiple files to support CloudFormation integration
-  - Standardize methods used in the script
-
-## Contribution
-
-Create a fork of the project into your own reposity. Make all your necessary changes and create a pull request with a description on what was added or removed and details explaining the changes in lines of code. If approved, project owners will merge it.
-
-## License
+# :pushpin: License
 
 * [MIT License](LICENSE)
 
-## Support
+# :point_right: About Rubrik Build
 
-Please file bugs and issues on the Github issues page for this project. This is to help keep track and document everything related to this repo.
-
-
+We encourage all contributors to become members. We aim to grow an active, healthy community of contributors, reviewers, and code owners. Learn more in our [Welcome to the Rubrik Build Community](https://github.com/rubrikinc/welcome-to-rubrik-build) page.
