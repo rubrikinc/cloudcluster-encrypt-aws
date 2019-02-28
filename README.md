@@ -4,7 +4,7 @@ The CC_Encrypt_AWS script is used to convert Rubrik Cloud Clusters on AWS from u
 
 ## Description
 
-CC_Encrypt_AWS will encrypt both the root disk and the data disks of a freshly launched Rubrik Cloud Cluster. It is not supported to use this script on a bootstrapped Cloud Cluster at this time. The script will take 40 minutes to an hour to run per node. It can be run in parrallel on separate nodes to speed up the proccess. Each iteration of the script will run on a separate AWS instance,
+CC_Encrypt_AWS will encrypt both the root disk and the data disks of a freshly launched Rubrik Cloud Cluster. It is not supported to use this script on a bootstrapped Cloud Cluster at this time. The script will take 40 minutes to an hour to run per node. It can be run in parrallel on separate nodes to speed up the proccess. Each iteration of the script will run on a separate AWS instance.
 
 ## Prerequisites
 
@@ -61,16 +61,12 @@ optional arguments:
 
 Create a fork of the project into your own reposity. Make all your necessary changes and create a pull request with a description on what was added or removed and details explaining the changes in lines of code. If approved, project owners will merge it.
 
-## Licensing
+## License
 
-CC_Encrypt_AWS is freely distributed under the [GPLv3 License](https://www.gnu.org/licenses/gpl-3.0.en.html "LICENSE"). See [LICENSE](https://github.com/rubrik-devops/cc_encrypt_aws/blob/master/LICENSE) for details.
+* [MIT License](LICENSE)
 
 ## Support
 
 Please file bugs and issues on the Github issues page for this project. This is to help keep track and document everything related to this repo.
 
-### Created and Maintained by the Rubrik Ranger Team
 
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/8610203/37415009-6f9cf416-2778-11e8-8b56-052a8e41c3c8.png" alt="Rubrik Ranger Logo"/>
-</p>
